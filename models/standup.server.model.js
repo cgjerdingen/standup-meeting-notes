@@ -42,4 +42,4 @@ exampleSchema.add({
     createdOn: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Standup',standupSchema);
+module.exports = mongoose.model('Standup', standupSchema);
