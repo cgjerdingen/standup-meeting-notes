@@ -35,7 +35,7 @@ exports.create = function (req, res) {
     });
     entry.save(function (err) {
         if (err) {
-            var errMsg = 'Sorry, there was an error saving the stand-up meeting note.' + err.message;
+            var errMsg = 'Sorry, there was an error saving the stand-up meeting note.' + err;
             res.render('newnote', { title: 'Standup - New Note (error)', message: errMsg });
         } else {
             console.log('Standup meeting note was saved!');
