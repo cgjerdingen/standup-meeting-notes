@@ -32,10 +32,18 @@ exports.create = function (req, res) {
         workYesterday: req.body.workYesterday,
         workToday: req.body.workToday,
         impediment: req.body.impediment
-        });
-    entry.save();
+    });
+    entry.save(function (err) {
+        if (err) {
+            var errMsg = 'Sorry, there was an error saving the stand-up meeting note.' + err.message;
+            res.render('newnote', { title: 'Standup - New Note (error)', message: errMsg });
+        } else {
+            console.log('Standup meeting note was saved!');
+            res.redirect(301, '/');
+        }
+    });
 
-    res.redirect(301, '/');
+    //res.redirect(301, '/');
 };
 
 exports.getNote = function (req, res) {
